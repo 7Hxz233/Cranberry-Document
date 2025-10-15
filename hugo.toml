@@ -1,4 +1,7 @@
 baseURL = 'https://example.org/'
 languageCode = 'en-us'
-title = 'My New Hugo Site'
+title = 'Cranberry-CTF 手册'
 theme = 'hugo-book'
+
+[markup.highlight]
+  style = 'github'

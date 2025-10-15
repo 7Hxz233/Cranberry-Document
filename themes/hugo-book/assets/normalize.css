@@ -18,6 +18,7 @@ Use a better box model (opinionated).
 html {
 	/* Improve consistency of default fonts in all browsers. (https://github.com/sindresorhus/modern-normalize/issues/3) */
 	font-family:
+		'Noto Serif SC', 
 		system-ui,
 		'Segoe UI',
 		Roboto,
@@ -30,6 +31,9 @@ html {
 	-webkit-text-size-adjust: 100%; /* 2. Prevent adjustments of font size after orientation changes in iOS. */
 	tab-size: 4; /* 3. Use a more readable tab size (opinionated). */
 }
+
+.book-article>p { text-indent: 2em; }    
+
 
 /*
 Sections
