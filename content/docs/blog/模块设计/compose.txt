@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  kali:
+    image: ****/kali:****
+    ports:
+      - "8080"
+      - "5900"
+      - "22"
+    environment:
+      - "VNCEXPOSE=1"
+      - "VNCPWD=kali_autogen_password"
+    networks:
+      - dmz
+
+  victim0:
+    image: eg_weakpasswd_victim0
+    networks:
+      - dmz
+      - n1
+  
+  victim1:
+    image: eg_weakpasswd_victim0
+    networks:
+      - n1
+  
+  victim2:
+    image: eg_weakpasswd_victim0
+    networks:
+      - n1
+      - n2
+  
+  victim3:
+    image: eg_weakpasswd_victim0
+    networks:
+      - n2
+  
+  victim4:
+    image: eg_weakpasswd_victim0
+    networks:
+      - n2  
+
+networks:
+  dmz:
+    driver: bridge
+  n1:
+    driver: bridge
+    internal: true
+  n2:
+    driver: bridge
+    internal: true
