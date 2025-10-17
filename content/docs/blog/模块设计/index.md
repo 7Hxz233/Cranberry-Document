@@ -151,7 +151,7 @@ sequenceDiagram
 
 ### 技术选型背后的考量
 
-笔者放弃了 Python + Flask 而转投 Kotlin + Spring，是因为笔者需要一个静态类型、强类型、空安全语言，以及 Spring 的生态，尤其是 Spring Security 和 Spring Data JDBC。至于为什么选了同步技术栈而不是异步技术栈（Spring WebFlux + Spring Data R2DBC + Kotlin suspend/flow），一方面是因为生态问题，另一方面是因为虚拟线程的性能与之没差多远。那当然选个写法更简洁的。
+笔者放弃了 Python + Flask 而转投 Kotlin + Spring，是因为笔者需要一个静态类型、空安全的语言，以及 Spring 的生态，尤其是 Spring Security 和 Spring Data JDBC。至于为什么选了同步技术栈而不是异步技术栈（Spring WebFlux + Spring Data R2DBC + Kotlin suspend/flow），一方面是因为生态问题，另一方面是因为虚拟线程的性能与之没差多远。那当然选个写法更简洁的。
 
 真正困难的选择在于实例管理器。我们得先选实例管理器，才能去实现对应的题目中心。容器题事实上有三种方案：Docker Swarm、K8s、以及自己用 docker compose 写一套。笔者曾经临时改造过 Blueberry，使之支持多层内网渗透，用的便是第三种方案。当时的 [docker compose 模板](compose.txt) 可以一看，原理是每次有人申请靶机，就命令行执行 `docker compose up -d`。在 DMZ 区放置一个 kali 容器，让用户 vnc 或者 ssh 连接上 kali 再打。
 
