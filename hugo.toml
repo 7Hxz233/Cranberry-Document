@@ -5,3 +5,9 @@ theme = 'hugo-book'
 
 [markup.highlight]
   style = 'github'
+
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
