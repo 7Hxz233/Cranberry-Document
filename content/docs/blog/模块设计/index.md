@@ -55,7 +55,7 @@ title: Cranberry 各模块设计沉思录
 
 细心的读者可能会注意到，patch 题目的 routine 是在靶机侧运行的，根本不知道场上有多少人解出，该如何实现前三血呢？其实 routine 自己不用管有多少人解出，它只需要返回 `action=simple_solved`，平台在执行 `simple_solved` 的回调时，自然会把得分比例修正成考虑了前三血后的样子。
 
-### 几个例子
+### 几个通讯例子
 
 下面，笔者将会举出一些案例，来证明“routine + score counter”可以完成所有需求。
 
@@ -67,10 +67,10 @@ sequenceDiagram
     用户->>平台: 请求 aaaa 题的靶机
     平台->>题目中心: 请求 aaaa 题的靶机
     题目中心->>Docker Swarm: docker stack deploy
-    Docker Swarm-->>题目中心: <题目中心IP>:port
-    题目中心-->>平台: <题目中心IP>:port
+    Docker Swarm-->>题目中心: <port>
+    题目中心-->>平台: <题目中心IP>:<port>
     平台->>平台: 设置反代
-    平台-->>用户: <平台IP>:port
+    平台-->>用户: <平台IP>:<port>
     用户->>平台: 请验证 flag
     平台->>平台: 执行 check flag routine，action=simple_solved
     平台->>平台: 执行 simple_solved 的回调，设置用户分数
